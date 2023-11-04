@@ -1,15 +1,15 @@
 <?php
-require_once '';
+require_once '../Registro/UsuarioRegistro.php';
 
-class LogController{}
+class LogController{
 
 /**
  * Metodo para controlar el inicio de sesion 
  */
 
- public function login($user, $password){
+ public function login($nombre, $contrasena){
     $usuarioRegistro = new UsuarioRegistro();
-    $usuario = $usuarioRegistro->find($user, $password);
+    $usuario = $usuarioRegistro->find($nombre, $contrasena);
 
     if($usuario){
         session_start();
@@ -25,12 +25,20 @@ class LogController{}
 public function register($data){
     $usuarioRegistro = new UsuarioRegistro();
 
-    if ( $usuarioRegistro->create($data) ){
-        header('Location: ../view/login.php');
-        exit;
-    }else{
-        header('refresh:0; url=../view/register.php?error=1');
-        exit;
-}
+   if (!isset($data['nombre']) || !isset($data['contrasena'])) {
+       header('refresh:0; url=../view/crearUsuario.php?error=1');
+       exit;
+   }
+
+   if ( $usuarioRegistro->create($data['nombre'], $data['contrasena'])) {
+       header('refresh:0; url=../view/login.php');
+       exit;
+   } else {
+       header('refresh:0; url=../view/crearUsuario.php?error=1');
+       exit;
+   }
 
 }
+}
+
+?>

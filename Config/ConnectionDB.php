@@ -10,7 +10,6 @@ class ConnectionDB{
     private $username = "ds72023";
     private $password = "ds72023";
     private $dbname = "bdds7";
-
     private $conn;
 
     private function __construct(){
@@ -26,11 +25,11 @@ class ConnectionDB{
 
    /**metodo para obtener la conexion a la BD */
 
-   private function getInstance(){
-    if($this->instance == null){
-        $this->instance = new ConnectionDB();
+   public static function getInstance(){
+    if(!self::$instance){
+        self::$instance = new ConnectionDB();
    }
-   return $this->instance;
+   return self::$instance->conn;
 }
 
 /**permitir obtencion de la instancia a la conexion a la bd */

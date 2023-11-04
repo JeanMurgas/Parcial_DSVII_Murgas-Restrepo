@@ -2,8 +2,8 @@
 
 class usuario{
     public $id_usuario;
-    public $user;
-    private $pass;
+    public $nombre;
+    private $contrasena;
     private $pdo; 
     private $result;
 
@@ -16,25 +16,25 @@ public function setIdUsuario($id_usuario){
 }
 
 public function getUser(){
-    return $this->user;
+    return $this->nombre;
 }
 
-public function setUser($user){
-    $this->user = $user;
+public function setUser($nombre){
+    $this->nombre = $nombre;
 }
 
 public function getPass(){
-    return $this->pass;
+    return $this->contrasena;
 }
 
-public function setPass($pass){
-    $this->pass = $pass;
+public function setPass($contrasena){
+    $this->contrasena = $contrasena;
 }
 
 public function cargardatos( $data){
     $this->setIdUsuario($data->id_usuario);
-    $this->setUser($data->user);
-    $this->setPass($data->pass);
+    $this->setUser($data->nombre);
+    $this->setPass($data->contrasena);
 }
 
 public function getPDO(){

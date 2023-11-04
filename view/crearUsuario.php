@@ -7,10 +7,10 @@ $logController = new LogController();
 $usuarioRegistro = new UsuarioRegistro();
 
 if (isset($_GET['registro'])) {
-    if (isset($_POST["user"]) && isset($_POST["password"])) {
+    if (isset($_POST["nombre"]) && isset($_POST["contrasena"])) {
         $datos = array(
-            "user" => $_POST["user"],
-            "password"=> $_POST["password"],
+            "user" => $_POST["nombre"],
+            "password"=> $_POST["contrasena"],
         );
 
         $logController->register($datos);
@@ -18,7 +18,6 @@ if (isset($_GET['registro'])) {
 }
 
 ?>
-
  
 <!DOCTYPE html>
 <html lang="en">
@@ -26,10 +25,13 @@ if (isset($_GET['registro'])) {
     <meta charset="UTF-8">
     <title>Registro de usuario</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../css/registro.css">
 </head>
-<body>
+<body style="height: 100vh; display: flex; align-items: center; justify-content: center;">
     <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-6">
+                <div class="card">
+                    <div class ="card-body">            
         <form class="form-signin" action="./crearUsuario.php?registro" method="post">
             <?php
            if(isset($_GET['error']) && $_GET['error'] == 1)
@@ -37,16 +39,30 @@ if (isset($_GET['registro'])) {
                echo "<div class='alert alert-danger' role='alert'>Las contraseñas no coinciden</div>";
            }
            ?>
-            <h1 class="form-signin-heading">Registro de usuario</h1>
-            <h2 class="form-signin-heading">Por favor registrese</h2>
-            <label for="inputUsername" class="sr-only">Nombre de usuario</label>
-            <input type="text" id="user" name="user" class="form-control" placeholder="Nombre de usuario" required autofocus>
-            <label for="inputPassword" class="sr-only">Contraseña</label>
-            <input type="password" id="password" name="password" class="form-control" placeholder="Contraseña" required>
-            <label for="inputConfirmPassword" class="sr-only">Confirmar Contraseña</label>
-            <input type="password" id="inputConfirmPassword" name="confirm_password" class="form-control" placeholder="Confirmar Contraseña" required>
-            <button class="btn btn-lg btn-primary btn-block" type="submit">Registrarse</button>
+             <div class="form-group">
+        <label for="nombre">Nombre</label>
+        <input type="text" class="form-control" id="nombre" name="nombre" required>
+    </div>
+
+    <div class="form-group">
+        <label for="apellido">Apellido</label>
+        <input type="text" class="form-control" id="apellido" name="apellido" required>
+    </div>
+
+    <div class="form-group">
+        <label for="email">Correo electrónico</label>
+        <input type="email" class="form-control" id="email" name="email" required>
+    </div>
+
+    <div class="form-group">
+        <label for="password">Contraseña</label>
+        <input type="password" class="form-control" id="password" name="password" required>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Registrar</button>
+</form>
         </form>
     </div>
 </body>
 </html>
+
