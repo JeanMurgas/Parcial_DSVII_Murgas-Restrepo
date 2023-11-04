@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <?php
 
 require_once '../Controller/LogController.php';
@@ -20,8 +19,6 @@ if (isset($_GET['registro'])) {
 
 ?>
  
-=======
->>>>>>> c0e71ffe61b5fd968fe63e6b9e502129364446f3
 <!DOCTYPE html>
 <html lang="en">
 <head>
