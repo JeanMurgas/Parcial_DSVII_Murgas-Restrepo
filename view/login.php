@@ -1,30 +1,3 @@
-<?php
- 
-require_once '../Controller/LogController.php';
-
-$LogController = new LogController();
-$error = null;
-
-if( isset($_GET['login'])){
-
-    if(isset($_POST['user']) && isset($_POST['password'])){
-        $user = $_POST['user'];
-        $password = $_POST['password'];
-        
-        if(!empty($user) && !empty($password)){
-            $LogController->login($user, $password);
-
-        }else{
-            $error = 'Por favor ingrese todos los campos';
-        }
-
-    }else{
-            $error = 'Por favor ingrese todos los campos';
-    }
-}
-               
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>

@@ -1,25 +1,3 @@
-<?php
-
-require_once '../Controller/LogController.php';
-require_once '../Registro/UsuarioRegistro.php';
-
-$logController = new LogController();
-$usuarioRegistro = new UsuarioRegistro();
-
-if (isset($_GET['registro'])) {
-    if (isset($_POST["user"]) && isset($_POST["password"])) {
-        $datos = array(
-            "user" => $_POST["user"],
-            "password"=> $_POST["password"],
-        );
-
-        $logController->register($datos);
-    }
-}
-
-?>
-
- 
 <!DOCTYPE html>
 <html lang="en">
 <head>
