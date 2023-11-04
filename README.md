@@ -18,3 +18,27 @@ Deberes a realizar:
 5. Usar PDO para manipular las acciones con la base de datos (query).
 6. Verificar que un usuario existe en el sistema antes de procesar el ticket.
 
+Pantallas: Login, CrearUsuario, LlenarTicket, ModificarEstadoTicket(solo la usa el usuarioTécnico)
+
+Database: 
+1. Tabla Usuario:
+Pk = id_usuario
+nombre
+apellido
+contrasena
+email
+
+2. Tabla UsuarioTecnico:
+Pk = id_usertecnico
+nombre
+apellido
+contrasena
+email
+
+3. Tabla Ticket
+PK = id_ticket
+FK = id_usuario
+título->unique
+descripción 
+fecha de creación
+estado
