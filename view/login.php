@@ -10,9 +10,9 @@ if( isset($_GET['login'])){
     if(isset($_POST['nombre']) && isset($_POST['contrasena'])){
         $user = $_POST['nombre'];
         $password = $_POST['contrasena'];
-        
-        if(!empty($user) && !empty($password)){
-            $LogController->login($user, $password);
+            
+        if(!empty($user) && !empty($contrasena)){
+            $LogController->login($nombre, $contrasena);
 
         }else{
             $error = 'Por favor ingrese todos los campos';
