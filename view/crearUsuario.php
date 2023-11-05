@@ -1,24 +1,3 @@
-<?php
-
-require_once '../Controller/LogController.php';
-require_once '../Registro/UsuarioRegistro.php';
-
-$logController = new LogController();
-$usuarioRegistro = new UsuarioRegistro();
-
-if (isset($_GET['registro'])) {
-    if (isset($_POST["nombre"]) && isset($_POST["contrasena"])) {
-        $datos = array(
-            "user" => $_POST["nombre"],
-            "password"=> $_POST["contrasena"],
-        );
-
-        $logController->register($datos);
-    }
-}
-
-?>
- 
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,13 +11,7 @@ if (isset($_GET['registro'])) {
             <div class="col-6">
                 <div class="card">
                     <div class ="card-body">            
-        <form class="form-signin" action="./crearUsuario.php?registro" method="post">
-            <?php
-           if(isset($_GET['error']) && $_GET['error'] == 1)
-           {
-               echo "<div class='alert alert-danger' role='alert'>Las contraseñas no coinciden</div>";
-           }
-           ?>
+        <form class="form-signin" action="./login.php?op=registro" method="post">
              <div class="form-group">
         <label for="nombre">Nombre</label>
         <input type="text" class="form-control" id="nombre" name="nombre" required>
@@ -60,6 +33,7 @@ if (isset($_GET['registro'])) {
     </div>
 
     <button type="submit" class="btn btn-primary">Registrar</button>
+    <a href="./login.php?op=backlogin" class="btn btn-lg btn-primary btn-block">Volver al Login</a>
 </form>
         </form>
     </div>

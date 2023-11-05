@@ -1,5 +1,5 @@
 <?php
-
+require_once './Config/ConnectionDB.php';
 class ticket{
     public $titulo;
     public $descripcion;
