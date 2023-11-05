@@ -1,7 +1,7 @@
 <?php
 
 $dbHost = 'localhost';
-$dbName = 'practica2';
+$dbName = 'tubasededatos';
 $dbUser = 'root';
 $dbPassword = '';
 ?>

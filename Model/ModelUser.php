@@ -1,5 +1,5 @@
 <?php
-require_once './Config/ConnectionDB.php';
+require_once(__DIR__ . '/db.php');
 class usuario{
     public $id_usuario;
     public $nombre;
@@ -9,35 +9,30 @@ class usuario{
     private $pdo; 
     private $result;
 
-    public function Login(){
-        try{
-            
-        }catch(PDOException $e){
-            echo "La contraseña o el usuario son incorrectos";
-            return null;
-        }
+    public function __construct()
+    {
+        $this->pdo = Db::StartUp();
     }
-
-    public function InsertarUser(Usuario $stmt){
+    public function InsertarUser(){
         try{
-            $query = "INSERT INTO `usuarios`(`id_user`, `nombre`, `apellido`, `email`, `pass`) VALUES (null,':nombre',':apellido',':email',':pass')";
+            $query = "INSERT INTO `usuarios`(`id_user`, `nombre`, `apellido`, `email`, `contrasena`) VALUES (null, :nombre, :apellido, :email, :contrasena)";
             $stmt = $this->pdo->prepare($query);
             $stmt->bindParam(':nombre', $this->nombre, PDO::PARAM_STR);
             $stmt->bindParam(':apellido', $this->apellido, PDO::PARAM_STR);
             $stmt->bindParam(':email', $this->email, PDO::PARAM_STR);
-            $stmt->bindParam(':pass', $this->contrasena, PDO::PARAM_STR);
-            $this->result = $stmt->execute();
-
-            if ($this->result) {
+            $stmt->bindParam(':contrasena', $this->contrasena, PDO::PARAM_STR);
+            
+            if ($stmt->execute()) {
                 return true;
             } else {
                 throw new Exception("No se pudo insertar el nuevo usuario");
             }
-        }catch(PDOException $e){
+        } catch(PDOException $e){
             throw new Exception("Error al insertar el usuario: " . $e->getMessage());
             return null;
         }
     }
+    
 
     public function InicioSesion(){
         if ($_SERVER["REQUEST_METHOD"] == "POST") {

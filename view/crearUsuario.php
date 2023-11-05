@@ -11,7 +11,7 @@
             <div class="col-6">
                 <div class="card">
                     <div class ="card-body">            
-        <form class="form-signin" action="./login.php?op=registro" method="post">
+        <form class="form-signin" action="../Controller/UserControl.php" method="POST">
              <div class="form-group">
         <label for="nombre">Nombre</label>
         <input type="text" class="form-control" id="nombre" name="nombre" required>
@@ -28,8 +28,8 @@
     </div>
 
     <div class="form-group">
-        <label for="password">Contraseña</label>
-        <input type="password" class="form-control" id="password" name="password" required>
+        <label for="contrasena">Contraseña</label>
+        <input type="password" class="form-control" id="contrasena" name="contrasena" required>
     </div>
 
     <button type="submit" class="btn btn-primary">Registrar</button>

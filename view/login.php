@@ -23,6 +23,6 @@
             <input type="password" class="form-control" id="contrasena" name="contrasena" placeholder="Contraseña">
         </div>
         <button class="btn btn-lg btn-primary btn-block" type="submit">Iniciar sesión</button>
-        <a href="./crearUsuario.php?op=crear" class="btn btn-lg btn-primary btn-block">Registrarse</a>
+        <a href="./view/crearUsuario.php?op=crear" class="btn btn-lg btn-primary btn-block">Registrarse</a>
     </form>
 </body>
