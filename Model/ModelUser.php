@@ -1,5 +1,5 @@
 <?php
-require_once('./Model/db.php');
+require_once('C:\xampp\htdocs\Parcial_DSVII_Murgas-Restrepo\Model\db.php');
 class usuario{
     public $id_usuario;
     public $nombre;
@@ -21,7 +21,8 @@ class usuario{
             $stmt->bindParam(':apellido', $this->apellido, PDO::PARAM_STR);
             $stmt->bindParam(':email', $this->email, PDO::PARAM_STR);
             $stmt->bindParam(':contrasena', $this->contrasena, PDO::PARAM_STR);
-            
+            $stmt->execute();
+
             if ($stmt->execute()) {
                 return true;
             } else {
@@ -40,23 +41,19 @@ class usuario{
             $this->contrasena = $_POST["contrasena"];
         
             // Realiza una consulta a la base de datos para verificar las credenciales
-            $query = "SELECT * FROM usuarios WHERE nombre = :nombre";
+            $query = "SELECT * FROM usuario WHERE nombre = :nombre";
             $stmt = $this->pdo->prepare($query);
             $stmt->bindParam(':nombre', $this->nombre);
             $stmt->execute();
             $user = $stmt->fetch(PDO::FETCH_ASSOC);
         
-            if ($user && password_verify($this->contrasena, $this->nombre["contrasena"])) {
+            if ($user && password_verify($this->contrasena, $user["contrasena"])) {
                 // Las credenciales son válidas, inicia una sesión para el usuario
                 session_start();
-                $_SESSION["user_id"] = $this->nombre["id"];
-        
-                // Redirige al usuario a su página de inicio o a la página principal
-                header("Location: ?op=menu");
-                exit();
+                $_SESSION["user_id"] = $user["id_usuario"];
+                return true;
             } else {
-                // Las credenciales no son válidas, muestra un mensaje de error
-                $error_message = "Credenciales incorrectas. Por favor, intenta de nuevo.";
+                return false;
             }
         }
     }

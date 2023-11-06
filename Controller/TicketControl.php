@@ -1,7 +1,7 @@
 <?php
-require_once("./Model/ModelTicket.php");
+require_once("C:\xampp\htdocs\Parcial_DSVII_Murgas-Restrepo\Model\ModelTicket.php");
 
-class UserControl{
+class TicketControl{
     private $model;
 
     public function __construct(){
@@ -10,6 +10,10 @@ class UserControl{
 
     public function _CrearTicket(){
         require('./view/crearTicket.php');
+    }
+
+    public function _Menu(){
+        require('./view/menu.php');
     }
 
     public function _InsertarTicket(){
@@ -24,7 +28,7 @@ class UserControl{
                 $insertResult = $ticket->_CrearTicket();
                 if ($insertResult === true) {
                     // Registro de usuario exitoso, redirige al usuario a la página de inicio de sesión
-                    header("Location: ?op=login");
+                    header("Location: ?op=menu");
                     exit();
                 } else {
                     // Error al registrar el usuario, muestra un mensaje de error en la vista de registro
@@ -39,6 +43,16 @@ class UserControl{
         } else {
             // Si no es una solicitud POST, muestra la página de registro
             include('./view/crearTicket.php');
+        }
+    }
+
+    public function _UsuarioTecnicoLogin(){
+        if (isset($_SESSION["usuario_tipo"]) && $_SESSION["usuario_tipo"] === "tecnico") {
+            // El usuario es un técnico, permitir el acceso a la página de "Modificar Ticket"
+            require('./view/modificarTicket.php');
+        } else {
+            // Redirigir a otra página o mostrar un mensaje de error si el usuario no tiene permiso
+            header("Location: ?op=menu"); // Por ejemplo, redirigir de nuevo al menú
         }
     }
 }

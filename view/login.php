@@ -13,7 +13,7 @@
             <div class="card">
                 <div class ="card-body">
     <h2 class="form-signin-heading">Inicio de sesión</h2>
-    <form class="form-signin" action="?op=iniciar" method="POST">
+    <form class="form-signin" action="?op=_IniciarLogin" method="POST">
         <div class="mb-3">
             <label for="user" class="form-label">Nombre de usuario</label>
             <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre de usuario">
@@ -23,6 +23,6 @@
             <input type="password" class="form-control" id="contrasena" name="contrasena" placeholder="Contraseña">
         </div>
         <button class="btn btn-lg btn-primary btn-block" type="submit">Iniciar sesión</button>
-        <a href="./view/crearUsuario.php?op=crear" class="btn btn-lg btn-primary btn-block">Registrarse</a>
+        <a href="?op=_CrearUsuario" class="btn btn-lg btn-primary btn-block">Registrarse</a>
     </form>
 </body>

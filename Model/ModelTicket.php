@@ -1,5 +1,5 @@
 <?php
-require_once ('./Model/db.php');
+require_once('C:\xampp\htdocs\Parcial_DSVII_Murgas-Restrepo\Model\db.php');
 class ticket{
     public $titulo;
     public $descripcion;

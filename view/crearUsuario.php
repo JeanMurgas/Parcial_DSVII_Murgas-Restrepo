@@ -11,7 +11,7 @@
             <div class="col-6">
                 <div class="card">
                     <div class ="card-body">            
-        <form class="form-signin" action="../Controller/UserControl.php" method="POST">
+        <form class="form-signin" action="?op=_InsertarUsuario" method="POST">
              <div class="form-group">
         <label for="nombre">Nombre</label>
         <input type="text" class="form-control" id="nombre" name="nombre" required>
@@ -33,7 +33,7 @@
     </div>
 
     <button type="submit" class="btn btn-primary">Registrar</button>
-    <a href="./login.php?op=backlogin" class="btn btn-lg btn-primary btn-block">Volver al Login</a>
+    <a href="?op=_Login" class="btn btn-lg btn-primary btn-block">Volver al Login</a>
 </form>
         </form>
     </div>

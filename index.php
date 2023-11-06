@@ -1,30 +1,35 @@
 <?php
-
-require_once("./Model/Db.php");
-require_once("./Model/ModelUser.php");
 require_once("./Controller/UserControl.php");
+require_once("./Controller/TicketControl.php");
 
-$contrl = new UserControl;
+$controlador = new UserControl();
+$controladorTicekt = new TicketControl();
 
-$contrl->_Login();
-
-if(isset($_GET['op']) && $_GET['op'] !== null)
-{
-    $valorURL = $_GET['op'];
-
-    if($valorURL == "crear"){
-        $contrl->_CrearUsuario();
-    }
-
-    if($valorURL == "menu"){
-        $contrl->_Menu();
-    }
-
-    #if($valorURL=="Registrar"){$contrl->InsertUser();}
-
-    if($valorURL == "backlogin"){
-        $contrl->_Login();
-    }
-
-    #if($valorURL == "enviar") {$contrl->_Login();}
+if (isset($_GET['op'])) {
+    $accion = $_GET['op'];
+} else {
+    $accion = '_Login';
 }
+
+switch ($accion) {
+    case '_Login':
+        $controlador->_Login();
+        break;
+    case '_IniciarLogin':
+        $controlador->_IniciarLogin();
+        break;
+    case '_CrearUsuario':
+        $controlador->_CrearUsuario();
+        break;
+    case '_InsertarUsuario':
+        $controlador->_InsertarUsuario();
+        break;
+    case '_Menu':
+        $controlador->_Menu();
+        $controladorTicekt->_Menu();
+        break;
+    default:
+        echo 'Acción no válida';
+        break;
+}
+?>

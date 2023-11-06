@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once('./Model/ModelUser.php');
+require_once('C:\xampp\htdocs\Parcial_DSVII_Murgas-Restrepo\Model\ModelUser.php');
 
 class UserControl{
     private $model;
@@ -30,23 +30,24 @@ class UserControl{
 
             try {
                 $loginResult = $usuario->InicioSesion();
-                if ($loginResult === true) {
+                if ($loginResult == true) {
                     // Inicio de sesión exitoso, redirige al usuario a la página de inicio
-                    header("Location: ?op=login");
+                    header("Location: ?op=_Menu");
                     exit();
                 } else {
                     // Error de inicio de sesión, muestra un mensaje de error en la vista de inicio de sesión
+                    header('Location: ?op=_Login');
                     $error_message = "Credenciales incorrectas. Por favor, intenta de nuevo.";
-                    include('./view/login.php');
                 }
             } catch (Exception $e) {
                 // Manejo de excepciones
+                header('Location: ?op=_Login');
                 $error_message = "Error en el inicio de sesión: " . $e->getMessage();
-                include('./view/login.php');
+                
             }
         } else {
             // Si no es una solicitud POST, muestra la página de inicio de sesión
-            include('./view/login.php');
+            header('Location: ?op=_Login');
         }
     }
 
@@ -56,7 +57,7 @@ class UserControl{
             $usuario->nombre = $_POST["nombre"];
             $usuario->apellido = $_POST["apellido"];
             $usuario->email = $_POST["email"];
-            $usuario->contrasena = $_POST["contrasena"];
+            $usuario->contrasena = md5($_POST["contrasena"]);
     
             try {
                 $insertResult = $usuario->InsertarUser();

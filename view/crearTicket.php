@@ -30,6 +30,7 @@
                                 <input type="text" class="form-control" id="estado" name="estado" placeholder="Coloca el estado como 'activo'">
                             </div>
                             <button type="submit" class="btn btn-primary">Crear Ticket</button>
+                            <a href="?op=_Menu"></a>
                         </form>
                     </div>
                 </div>
