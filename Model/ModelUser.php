@@ -1,5 +1,5 @@
 <?php
-require_once(__DIR__ . '/db.php');
+require_once('./Model/db.php');
 class usuario{
     public $id_usuario;
     public $nombre;

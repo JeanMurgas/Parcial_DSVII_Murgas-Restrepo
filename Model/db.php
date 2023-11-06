@@ -1,5 +1,4 @@
 <?php
-require_once './Config/ConnectionDB.php';
 class Db {
     public static function StartUp() {
         try {

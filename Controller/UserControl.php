@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once('ModelUser.php');
+require_once('./Model/ModelUser.php');
 
 class UserControl{
     private $model;
