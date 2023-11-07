@@ -7,15 +7,15 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIh6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
 <body>
-    <div class="container">
+    <div class="container mt-5">
         <div class="row justify-content-center">
             <div class="col-6">
                 <div class="card">
                     <div class="card-body">
-                        <h3>Menú</h3>
-                        <a href="login.php" class="btn btn-primary">Ir a Login</a>
-                        <a href="crearUsuario.php" class="btn btn-primary">Crear Usuario</a>
-                        <a href="crearTicket.php" class="btn btn-primary">Crear Ticket</a>
+                        <h3 class="mb-4">Menú</h3>
+                        <a href="?op=_Login" class="btn btn-lg btn-primary btn-block">Ir a Login</a>
+                        <a href="?op=_CrearUsuario" class="btn btn-lg btn-primary btn-block">Crear Usuario</a>
+                        <a href="?op=_CrearTicket" class="btn btn-lg btn-primary btn-block">Crear Ticket</a>
                     </div>
                 </div>
             </div>

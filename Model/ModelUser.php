@@ -15,13 +15,12 @@ class usuario{
     }
     public function InsertarUser(){
         try{
-            $query = "INSERT INTO `usuarios`(`id_user`, `nombre`, `apellido`, `email`, `contrasena`) VALUES (null, :nombre, :apellido, :email, :contrasena)";
+            $query = "INSERT INTO `usuario`(`nombre`, `apellido`, `contrasena`, `email`) VALUES (:nombre, :apellido, :contrasena,:email')";
             $stmt = $this->pdo->prepare($query);
             $stmt->bindParam(':nombre', $this->nombre, PDO::PARAM_STR);
             $stmt->bindParam(':apellido', $this->apellido, PDO::PARAM_STR);
-            $stmt->bindParam(':email', $this->email, PDO::PARAM_STR);
             $stmt->bindParam(':contrasena', $this->contrasena, PDO::PARAM_STR);
-            $stmt->execute();
+            $stmt->bindParam(':email', $this->email, PDO::PARAM_STR);
 
             if ($stmt->execute()) {
                 return true;
@@ -55,6 +54,7 @@ class usuario{
             } else {
                 return false;
             }
+            return true;
         }
     }
 

@@ -24,5 +24,10 @@
         </div>
         <button class="btn btn-lg btn-primary btn-block" type="submit">Iniciar sesión</button>
         <a href="?op=_CrearUsuario" class="btn btn-lg btn-primary btn-block">Registrarse</a>
+        <?php
+    if (isset($_GET['error'])) {
+        echo '<div class="alert alert-danger">' . $_GET['error'] . '</div>';
+    }
+    ?>
     </form>
 </body>

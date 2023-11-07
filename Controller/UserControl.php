@@ -36,13 +36,11 @@ class UserControl{
                     exit();
                 } else {
                     // Error de inicio de sesión, muestra un mensaje de error en la vista de inicio de sesión
-                    header('Location: ?op=_Login');
-                    $error_message = "Credenciales incorrectas. Por favor, intenta de nuevo.";
+                    header('Location: ?op=_Login&error=Credenciales_incorrectas._Por_favor_intenta_de_nuevo');
                 }
             } catch (Exception $e) {
                 // Manejo de excepciones
-                header('Location: ?op=_Login');
-                $error_message = "Error en el inicio de sesión: " . $e->getMessage();
+                header('Location: ?op=_Login&error=Error_al_iniciar_el_sesion: ' . $e->getMessage());
                 
             }
         } else {
@@ -56,24 +54,19 @@ class UserControl{
             $usuario = new usuario();
             $usuario->nombre = $_POST["nombre"];
             $usuario->apellido = $_POST["apellido"];
+            $usuario->contrasena = $_POST["contrasena"];
             $usuario->email = $_POST["email"];
-            $usuario->contrasena = md5($_POST["contrasena"]);
     
             try {
                 $insertResult = $usuario->InsertarUser();
                 if ($insertResult === true) {
                     // Registro de usuario exitoso, redirige al usuario a la página de inicio de sesión
-                    header("Location: ?op=login");
+                    header("Location: ?op=_Login");
                     exit();
-                } else {
-                    // Error al registrar el usuario, muestra un mensaje de error en la vista de registro
-                    $error_message = "No se pudo registrar el nuevo usuario. Por favor, intenta de nuevo.";
-                    include('./view/crearUsuario.php');
                 }
             } catch (Exception $e) {
                 // Manejo de excepciones
-                $error_message = "Error al registrar el usuario: " . $e->getMessage();
-                include('./view/crearUsuario.php');
+                header('Location: ?op=_CrearUsuario&error=Error al registrar el usuario: ' . $e->getMessage());
             }
         } else {
             // Si no es una solicitud POST, muestra la página de registro

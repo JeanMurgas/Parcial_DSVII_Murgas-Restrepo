@@ -3,7 +3,7 @@ require_once("./Controller/UserControl.php");
 require_once("./Controller/TicketControl.php");
 
 $controlador = new UserControl();
-$controladorTicekt = new TicketControl();
+$controladorTicket = new TicketControl();
 
 if (isset($_GET['op'])) {
     $accion = $_GET['op'];
@@ -21,12 +21,20 @@ switch ($accion) {
     case '_CrearUsuario':
         $controlador->_CrearUsuario();
         break;
+    case '_CrearTicket':
+        $controladorTicket->_CrearTicket();
+        break;
+    case '_InsertarTicket':
+        $controladorTicket->_InsertarTicket();
+        break;
     case '_InsertarUsuario':
         $controlador->_InsertarUsuario();
         break;
     case '_Menu':
         $controlador->_Menu();
-        $controladorTicekt->_Menu();
+        break;
+    case '_MenuTicket':
+        $controladorTicket->_MenuTicket();
         break;
     default:
         echo 'Acción no válida';

@@ -12,25 +12,25 @@
             <div class="col-6">
                 <div class="card">
                     <div class="card-body">
-                        <form method="post" action="../Controller/TicketControl.php">
+                        <form method="post" action="?op=_InsertarTicket">
                             <div class="mb-3">
                                 <label for="titulo" class="form-label">Título</label>
-                                <input type="text" class="form-control" id="titulo" name="titulo" placeholder="Escribe un título">
+                                <input type="text" class="form-control" id="titulo" name="titulo" placeholder="Escribe un título" required>
                             </div>
                             <div class="mb-3">
                                 <label for="descripcion" class="form-label">Descripción</label>
-                                <textarea class="form-control" id="descripcion" name="descripcion" rows="3"></textarea>
+                                <textarea class="form-control" id="descripcion" name="descripcion" rows="3" required></textarea>
                             </div>
                             <div class="mb-3">
                                 <label for="fecha_creacion" class="form-label">Fecha de creación</label>
-                                <input type="text" class="form-control" id="fecha_creacion" name="fecha_creacion" placeholder="Fecha del ticket">
+                                <input type="text" class="form-control" id="fecha_creacion" name="fecha_creacion" placeholder="Fecha del ticket" required>
                             </div>
                             <div class="mb-3">
                                 <label for="estado" class="form-label">Estado</label>
-                                <input type="text" class="form-control" id="estado" name="estado" placeholder="Coloca el estado como 'activo'">
+                                <input type="text" class="form-control" id="estado" name="estado" placeholder="Coloca el estado como 'Activo'" required>
                             </div>
                             <button type="submit" class="btn btn-primary">Crear Ticket</button>
-                            <a href="?op=_Menu"></a>
+                            <a href="?op=_Menu" class="btn btn-primary">Menú</a>
                         </form>
                     </div>
                 </div>

@@ -1,5 +1,5 @@
 <?php
-require_once("C:\xampp\htdocs\Parcial_DSVII_Murgas-Restrepo\Model\ModelTicket.php");
+require_once('C:\xampp\htdocs\Parcial_DSVII_Murgas-Restrepo\Model\ModelTicket.php');
 
 class TicketControl{
     private $model;
@@ -12,7 +12,7 @@ class TicketControl{
         require('./view/crearTicket.php');
     }
 
-    public function _Menu(){
+    public function _MenuTicket(){
         require('./view/menu.php');
     }
 
